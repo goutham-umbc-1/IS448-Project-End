@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0058)file:///Users/Connor/Documents/is448/registration_app.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title> Voter Registration Application </title>
+	<link rel="stylesheet" type="text/css" href="app_format.css">
+	<script type="text/javascript" src="registration_form.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js"></script>
+</head>
+<body>
+
+<p class="heading"> <span class="large"> Voter Registration Application </span>
+					<br>
+                    <span class="italic"> (*) Denotes Requied Field </span> </p>
+
+<div class="background">
+
+<form method="post" action="registration_form.php">
+	<p>
+		<span class="bold"> 1. New User Info </span>
+		<br>
+
+
+		<label> *Username: <input type="text" name="uname" size="25" id="uname" required="" onmouseover = "messages(2)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+
+		<label> *Password: <input type="password" name="pass" size="25" id="pass" required="" onmouseover = "messages(10)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+
+		<label> *Confirm Password: <input type="password" name="confirmpass" size="25" id="confirmpass" required="" onmouseover = "messages(10)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+
+		<span class="bold"> 2. Your Name </span>
+		<br>
+
+		<label> *First Name: <input type="text" name="fname" size="25" id="fname" required="" onmouseover = "messages(0)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<label> Middle Initial: <input type="text" name="middle" size="25" id="mname" onmouseover = "messages(0)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<label> *Last Name: <input type="text" name="lname" size="25" id="lname" required="" onmouseover = "messages(0)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<span class="bold"> 3. *Eligibility </span>
+		    <br>
+			If you answer <span style="font-style: italic; color: red;" id="changecolor" onmouseover="changeColor('mouseover');" onmouseout="changeColor('mouseout');">"No" </span> to either of the following questions, you cannot register to vote.
+		<br>
+		<br>
+		
+		<label> Are you a citizen of the U.S.? <br>
+							  <input type="radio" name="citizen" value="yes" id="citizen" required="" onclick="checkButton1(this.value)"> Yes 
+							  <input type="radio" name="citizen" value="no" id="citizen" required="" onclick="checkButton1(this.value)"> No </label>
+							  <div id="button1" style="font-style: italic; color: red;"></div>
+		<br>
+		<br>	
+
+		<label> Will you be 18 years or older on or before election day? <br>
+							  <input type="radio" name="eighteen" value="yes" id="eighteen" required="" onclick="checkButton2(this.value)"> Yes 
+							  <input type="radio" name="eighteen" value="no" id="eighteen" required="" onclick="checkButton2(this.value)"> No </label>
+							  <br><br>
+							  <div id="button2" style="font-style: italic; color: red;"></div>
+		<br>
+		<br>
+
+	    <span class="bold"> 4. About You </span>
+	    <br>
+		<label> *Date of Birth: <input type="text" name="DOB" placeholder="MM/DD/YYY" id="DOB" required="" onmouseover = "messages(1)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<label> Race: <input type="text" name="race" id="race" onmouseover = "messages(2)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<label> *Phone Number: <input type="text" name="phone" placeholder="###-###-####" id="phone" required="" onmouseover = "messages(3)"
+                 onmouseout = "messages(9)"> </label>
+		<label> Email: <input type="text" name="email" id="email" onmouseover = "messages(4)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<span class="bold"> 5. Your Address </span>
+		<br>
+		<label> *Address: <input type="text" name="addr" size="25" id="addr" required="" onmouseover = "messages(5)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+		<label> *City: <input type="text" name="city" size="15" id="city" required="" onmouseover = "messages(6)"
+                 onmouseout = "messages(9)"> </label>
+		<label> *State:
+					 <select name="state" id="state" required="">	
+					 	<option> MD </option>
+					 </select> </label>
+
+		<label> *Zip: <input type="text" name="zip" size="10" id="zip" required="" onmouseover = "messages(7)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<label> County: <input type="text" name="county" id="county" onmouseover = "messages(8)"
+                 onmouseout = "messages(9)"> </label>
+		<br>
+		<br>
+
+		<span class="bold"> 6. Party Affiliation </span>
+		<br>
+		<label> Affiliation: <select name="aff" id="aff"> 
+								<option>  </option>
+								<option> Democrat </option>
+								<option> Republican </option>
+								<option> Libertarian </option> 
+								<option> Green </option>
+								<option> Independent </option>
+							</select> </label>
+		
+	</p>
+	<textarea id = "adviceBox"  rows = "3"  cols = "50">
+	This box provides advice on filling out the form
+	on this page. Put the mouse cursor over any input
+	field to get advice.
+    </textarea>
+
+	<div class="center">
+	<input type="submit" value="Submit" id="submit" onclick="return validateForm();" />
+	<input type="reset" value="Clear" />
+	</div>
+
+</form>
+</div>
+	
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title> Voter Registration System </title>
+		<meta http-equiv="Content-Type" content="charset=UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="app_format.css"/>
+		<script type="text/javascript" src="changeColor"></script>
+	</head>
+	<body>
+		<p class="heading"><span class="large">Enter a username and password</span></p>
+		<div class="background" align = "center">
+		<form method="post" action="signup.php">
+					<span id="username" onmouseover="usernameMouseOver();" onmouseout="usernameMouseOut();">Username:</span><br>
+					<input type="text" name="username"><br/>
+					<span id="password" onmouseover="passwordMouseOver();" onmouseout="passwordMouseOut();">Password:</span><br>
+					<input type="password" name="password"><br/>
+                    Confirm Password:<br/>
+                    <input type="password" name="confirmPassword" ><br/>
+		</div>
+		<div class="heading">
+			<p>
+				<input type="submit" value="Sign up"/>
+				<input type="reset" value="Clear"/>
+			</p>
+    </div>
+	</form>
+	</body>
+</html>	

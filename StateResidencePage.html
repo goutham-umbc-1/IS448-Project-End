@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Gregory Y. Rigby -->
+<head>
+
+	<title>Confirm State Residence</title>
+	<link rel="stylesheet" type="text/css" href="app_format.css" />
+<script type = "text/javascript" src= "StateResPJ.js" >
+</script> 
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js"></script>
+
+</head>
+ 
+<body> 
+
+
+<form action = "StateResP.php" method="post">
+
+<h1 class = "heading"> <span id ="changeText" 
+	 style = "color: black;" 
+         onmouseover =  "changeColor('mouseover')"
+         onmouseout = "changeColor('mouseout')"> State Residence Confirmation </span></h1>
+
+ 
+ 
+<div class ="background">
+
+<h3> Provide information for one of the following options.</h3>
+
+<label id="idcolor" onmouseover="mouseOver();" onmouseout="mouseOut();">
+<span class="italic"> Option 1 - </span>
+ MVA ID Card Number:  
+<input type="text" name="state_id" id="state_id" onchange="IDcheck()" onmouseover = "messages(0)" onmouseout = "messages(3)"  onblur="checkResults(this.value);" />
+</label>
+<br /> <br />
+  
+<label id="licolor" onmouseover="mouseOver();" onmouseout="mouseOut();">
+<span class="italic"> Option 2 -</span>
+Driver's License Number: 
+<input type="text" name="licen_num" id="licen_num" onchange="LicenCheck()" onmouseover = "messages(1)" onmouseout = "messages(3)"  onblur="checkResults(this.value);"/>
+</label>
+<br /> <br />
+
+<label id="socolor" onmouseover="mouseOver();" onmouseout="mouseOut();">
+<span class="italic"> Option 3 -</span></td>
+Social Security Number <font size="3">(last 4 digits)</font>: 
+<input type="text" name="soc_num" id="soc_num" onchange="SecNumCheck()" onmouseover = "messages(2)" onmouseout = "messages(3)"  onblur="checkResults(this.value);"/>
+</label>
+<br /> <br />
+
+ <textarea id = "tipBox"  rows = "3"  cols = "50">
+This box provides tips on filling out the form
+on this page. Put the mouse cursor over any input
+field to get tips.
+        </textarea>
+
+</div>
+
+
+
+<div class ="heading">
+  <p> <input type="submit" value="Submit"/>
+      <input type="reset" value="Clear"/> </p>
+</div>
+
+  <div id="results"></span>
+ 
+
+</form>
+</body>
+</html>

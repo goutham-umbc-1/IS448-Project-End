@@ -1,0 +1,590 @@
+<html>
+<head><title> Mapping Distribution </title>
+<link rel="stylesheet" type="text/css" href="app_format.css" />
+<script type = "text/javascript"  src = "ex.js" >
+  </script>
+<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js "></script>
+
+
+</head>
+<h1 class = "heading">Mapping Distribution System</h1>
+
+
+<body>
+<div class= "background">
+<p class = "bold"> Enter your zip code to find your voting zone.  </p>
+<form method="post" action="mapdistsys.php">
+<p class= "bold"> User Zip Code: </p>
+	<input type= "text" name='zip' size= "30" onblur="validate(this.value);"/></label>
+	<input type = "submit" value = "Get Zone"  /><span id = "msg"></span>
+	</form>
+	</div>
+	
+	<br />
+  <label>
+  Pick a County for list of Sites: 
+  
+  <select id="dataType" name="dataType" onfocus="this.selectedIndex=0;"onchange= "myMap(value)">
+            <option value=""></option>
+			<option value="Allegany County">Allegany County</option>
+			<option value="Anne Arundel">Anne Arundel</option>
+			<option value="Baltimore City">Baltimore City</option>
+			<option value="Baltimore County">Baltimore County</option>
+			<option value="Calvert County">Calvert County</option>
+			<option value="Caroline County">Caroline County</option>
+			<option value="Carroll County">Carroll County</option>
+			<option value="Cecil County">Cecil County</option>
+			<option value="Charles County">Charles County</option>
+			<option value="Dorchester County">Dorchester County</option>
+			<option value="Frederick County">Frederick County</option>
+			<option value="Garrett County">Garrett County</option>
+			<option value="Hartford County">Hartford County</option>
+			<option value="Howard County">Howard County</option>
+			<option value="Kent County">Kent County</option>
+			<option value="Montgomery County">Montgomery County</option>
+			<option value="Prince Georges County">Prince Georges County</option>
+			<option value="Queen Annes County">Queen Annes County</option>
+			<option value="Saint Marys County">Saint Marys County</option>
+			<option value="Somerset County">Somerset County</option>
+			<option value="Talbot County">Talbot County</option>
+			<option value="Washington County">Washington County</option>
+			<option value="Wicomico County">Wicomico County</option>
+			<option value="Worcester County">Worcester County</option>
+  </select>
+  </label>
+  <br />
+	
+	
+<div id="map" style="width:100%;height:500px"></div>
+
+<script>
+function myMap(x) {
+alert(x);
+  var mapCanvas = document.getElementById("map");
+  var myCenter = new google.maps.LatLng(38.95272,-76.70125); 
+  var point1 = new google.maps.LatLng(39.63976, -78.7823);
+  var point2 = new google.maps.LatLng(38.98771, -76.55803);
+  var point3 = new google.maps.LatLng(39.153496, -76.614111);//GlenBurnie Library
+  var point4 = new google.maps.LatLng(39.07266, -76.54481);//Severna Library
+  var point5 = new google.maps.LatLng(38.975495, -76.512289);//Annapolis Senior Center
+  var point6 = new google.maps.LatLng(38.929285, -76.558818);//Edgewater Community Library
+  var point7 = new google.maps.LatLng(39.35447, -76.68311);//Public safety training center
+  var point8 = new google.maps.LatLng(39.28623, -76.56667);//Southeast Anchor Library
+  var point9 = new google.maps.LatLng(39.32086, -76.54533);//MAritime Industries
+  var point10 = new google.maps.LatLng(39.34453, -76.59863);//League for people with disabilities
+  var point11 = new google.maps.LatLng(39.29269, -76.69103);//Univ of Md at Baltimore
+  var point12 = new google.maps.LatLng(39.28915, -76.63168);//Community engagment center
+  var point13 = new google.maps.LatLng(39.38945, -76.60649);//Towson UNiv.
+  var point14 = new google.maps.LatLng(39.243534, -76.711586);//Arbutus Community center
+  var point15 = new google.maps.LatLng(39.392297, -76.453923);//HoneyGo Run Comm Center
+  var point16 = new google.maps.LatLng(39.244159, -76.509585);//Soller Point Center
+  var point17 = new google.maps.LatLng(39.362935, -76.788138);//Randallstown Comm center
+  var point18 = new google.maps.LatLng(39.33715, -76.45742);//VictoryCila Comm center
+  var point19 = new google.maps.LatLng(39.497796, -76.683589);//center of md Agriculture
+  var point20 = new google.maps.LatLng(39.4525, -76.81642);//reisterstown senior center
+  var point21 = new google.maps.LatLng(39.32312, -76.72614);//woodlawn comm. center
+  var point22 = new google.maps.LatLng(38.53685, -76.58472);//Community resource building
+  var point23 = new google.maps.LatLng(38.88118, -75.82577);// Caoline County service building
+  var point24 = new google.maps.LatLng(39.56354, -76.991515);//wesminster senior activities ctr
+  var point25 = new google.maps.LatLng(39.59757, -75.78561);//cecil county admin building
+  var point26 = new google.maps.LatLng(38.54368, -76.9803);//la plata firehouse
+  var point27 = new google.maps.LatLng(38.57715, -76.913994);//Gleneagles Neighborhood Center
+  var point28 = new google.maps.LatLng(38.572313, -76.074347);// Dorchester office
+  var point29 = new google.maps.LatLng(39.436644, -77.412079);//Frederick  Senior Center
+  var point30 = new google.maps.LatLng(39.612969, -77.411862);// Thurmont Library 
+  var point31 = new google.maps.LatLng(39.331594, -77.354277);//Urbana Library
+  var point32 = new google.maps.LatLng(39.43844, -77.54193);//MIddletown VFD
+  var point33 = new google.maps.LatLng(39.408388, -79.399406);//oakland comm center
+  var point34 = new google.maps.LatLng(39.695326, -79.100306);//NOrthern Outreach center
+  var point35 = new google.maps.LatLng(39.522573, -76.343485);//Mcfaul Comm center
+  var point36 = new google.maps.LatLng(39.425301, -76.297347);//Edgewood library
+  var point37 = new google.maps.LatLng(39.528389, -76.196845);//University center
+  var point38 = new google.maps.LatLng(39.602105, -76.480586);//Jarretsville library
+  var point39 = new google.maps.LatLng(39.223519, -76.88824);// The brain senior center
+  var point40 = new google.maps.LatLng(39.272389, -76.839412);//Miller branch library
+  var point41 = new google.maps.LatLng(39.167753, -76.800607);//Ridgly's Comm Center
+  var point42 = new google.maps.LatLng(39.211209, -76.069047);//KentCouny Library
+  var point43 = new google.maps.LatLng(39.164977, -77.287002);//Germantown Community Recreation Center
+  var point44 = new google.maps.LatLng(39.102071, -76.941688);//Marilyn J. Praisner Community Recreation Center
+  var point45 = new google.maps.LatLng(39.083127, -77.150005);//Executive Office Building Auditorium
+  var point46 = new google.maps.LatLng(38.997482, -77.023911);//Silver Spring Civic Building 
+  var point47 = new google.maps.LatLng(39.134116, -77.190629);//Bohrer Park Social Hall
+  var point48 = new google.maps.LatLng(39.274813, -77.216832);//Damascus Community
+  var point49 = new google.maps.LatLng(38.982641, -77.087039);//Jane E. Lawton Community Recreation Center
+  var point50 = new google.maps.LatLng(39.086242, -77.043169);//Mid-County Community Recreation Center 
+  var point51 = new google.maps.LatLng(39.046734, -77.051503);//Wheaton Volunteer Rescue 
+  var point52 = new google.maps.LatLng(39.040877, -77.192511);//Potomac Community Recreation Center
+  var point53 = new google.maps.LatLng(38.816125, -76.746292);//Upper Marlboro Community Center
+  var point54 = new google.maps.LatLng(38.985907, -76.928715);//College Park Community Center
+  var point55 = new google.maps.LatLng(38.945012, -76.740705);//Bowei Gym
+  var point56 = new google.maps.LatLng(38.911129, -76.868095);//Wayne K. Curry Sports and Learning Complex
+  var point57 = new google.maps.LatLng(38.66042, -76.771457);//Baden Community Center
+  var point58 = new google.maps.LatLng(39.084562, -76.884027);//Beltsville Senior Activity Center
+  var point59 = new google.maps.LatLng(38.84426, -76.909867);//Suitland Community Park School Center
+  var point60 = new google.maps.LatLng(38.791726, -76.97458);//Southern Regional Technology and Recreation Comple
+  var point61 = new google.maps.LatLng(38.671726, -77.026561);//Accokeek VFD Training and Activity Center
+  var point62 = new google.maps.LatLng(38.974158, -76.281642);//Kent Island Fire Department
+  var point63 = new google.maps.LatLng();//Queen Anne’s Office Building, 
+  var point64 = new google.maps.LatLng(38.26622, -76.45272);//Hollywood Firehouse 
+  var point65 = new google.maps.LatLng(38.208576, -75.696414);//Somerset County Office Building
+  var point66 = new google.maps.LatLng(38.780718, -76.073125);//Easton Fire Hall
+  var point67 = new google.maps.LatLng(39.637431, -77.760352);//Washington County Early Voting Center
+  var point68 = new google.maps.LatLng(38.360882, -75.576681);//Wicomico County Youth and Civic Center
+  var point69 = new google.maps.LatLng(38.316928, -75.211481);//Gull Creek Senior Living Community
+  
+  
+  
+  
+  
+  var mapOptions = {center: myCenter, zoom: 5};
+  var map = new google.maps.Map(mapCanvas,mapOptions);
+  
+  
+ 
+  
+  if(x == "Allegany County"){
+  var marker1 = new google.maps.Marker({
+    position: point1,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker1.setMap(map);
+  }
+  
+  
+  //marker2.setMap(map);
+  
+  if(x == "Anne Arundel"){
+  var marker2 = new google.maps.Marker({
+    position: point2,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker3 = new google.maps.Marker({
+    position: point3,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker4 = new google.maps.Marker({
+    position: point4,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker5 = new google.maps.Marker({
+    position: point5,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker6 = new google.maps.Marker({
+    position: point6,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker2.setMap(map);
+  marker3.setMap(map);
+  marker4.setMap(map);
+  marker5.setMap(map);
+  marker6.setMap(map);
+  }
+  
+  if(x == "Baltimore City"){
+  var marker7 = new google.maps.Marker({
+    position: point7,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker8 = new google.maps.Marker({
+    position: point8,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker9 = new google.maps.Marker({
+    position: point9,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker10 = new google.maps.Marker({
+    position: point10,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker11 = new google.maps.Marker({
+    position: point11,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker12 = new google.maps.Marker({
+    position: point12,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker7.setMap(map);
+  marker8.setMap(map);
+  marker9.setMap(map);
+  marker10.setMap(map);
+  marker11.setMap(map);
+  marker12.setMap(map);
+  }
+  if(x == "Baltimore County"){
+  var marker13 = new google.maps.Marker({
+    position: point13,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker14 = new google.maps.Marker({
+    position: point14,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker15 = new google.maps.Marker({
+    position: point15,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker16 = new google.maps.Marker({
+    position: point16,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker17 = new google.maps.Marker({
+    position: point17,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker18 = new google.maps.Marker({
+    position: point18,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker19 = new google.maps.Marker({
+    position: point19,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker20 = new google.maps.Marker({
+    position: point20,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker21 = new google.maps.Marker({
+    position: point21,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker13.setMap(map);
+  marker14.setMap(map);
+  marker15.setMap(map);
+  marker16.setMap(map);
+  marker17.setMap(map);
+  marker18.setMap(map);
+  marker19.setMap(map);
+  marker20.setMap(map);
+  marker21.setMap(map);
+  }
+  
+  //Calvert County
+  if(x == "Calvert County"){
+  var marker22 = new google.maps.Marker({
+    position: point22,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker22.setMap(map);
+  }
+  //Caroline County
+  if(x == "Caroline County"){
+  var marker23 = new google.maps.Marker({
+    position: point23,
+    animation: google.maps.Animation.BOUNCE
+  }); 
+   marker23.setMap(map);
+  }
+  
+  //Carroll County
+  if(x == "Caroline County"){
+  var marker24 = new google.maps.Marker({
+    position: point24,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker24.setMap(map);
+  }
+  
+  //Cecil County
+  if(x == "Cecil County"){
+  var marker25 = new google.maps.Marker({
+    position: point25,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker25.setMap(map);
+  }
+  
+  
+  //Charles County-2
+  if(x == "Charles County"){
+  var marker26 = new google.maps.Marker({
+    position: point26,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker27 = new google.maps.Marker({
+    position: point27,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker26.setMap(map);
+  marker27.setMap(map);
+  }
+  
+  //Dorchester County-1
+  if(x == "Dorchester County"){
+  var marker28 = new google.maps.Marker({
+    position: point28,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker28.setMap(map);
+  }
+  
+  //Frederick County-4
+    if(x == "Frederick County"){
+  var marker29 = new google.maps.Marker({
+    position: point29,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker30 = new google.maps.Marker({
+    position: point30,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker31 = new google.maps.Marker({
+    position: point31,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker32 = new google.maps.Marker({
+    position: point32,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker29.setMap(map);
+  marker30.setMap(map);
+  marker31.setMap(map);
+  marker32.setMap(map);
+  }
+  
+  
+  //Garrett County-2
+  if(x == "Garrett County"){
+  var marker33 = new google.maps.Marker({
+    position: point33,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker34 = new google.maps.Marker({
+    position: point34,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker33.setMap(map);
+  marker34.setMap(map);
+  }
+  
+  //Harford County-4
+    if(x == "Harford County"){
+  var marker35 = new google.maps.Marker({
+    position: point35,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker36 = new google.maps.Marker({
+    position: point36,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker37 = new google.maps.Marker({
+    position: point37,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker38 = new google.maps.Marker({
+    position: point38,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker35.setMap(map);
+  marker36.setMap(map);
+  marker37.setMap(map);
+  marker38.setMap(map);
+  }
+  
+  //Howard County-4
+    if(x == "Howard County"){
+  var marker39 = new google.maps.Marker({
+    position: point39,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker40 = new google.maps.Marker({
+    position: point40,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker41 = new google.maps.Marker({
+    position: point41,
+    animation: google.maps.Animation.BOUNCE
+  });
+  
+  marker39.setMap(map);
+  marker40.setMap(map);
+  marker41.setMap(map);
+  
+  }
+  
+  //Kent County
+  if(x == "Kent County"){
+  var marker42 = new google.maps.Marker({
+    position: point42,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker42.setMap(map);
+  }
+  
+  //Montgomery County
+  if(x == "Montgomery County"){
+  var marker43 = new google.maps.Marker({
+    position: point43,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker44 = new google.maps.Marker({
+    position: point44,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker45 = new google.maps.Marker({
+    position: point45,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker46 = new google.maps.Marker({
+    position: point46,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker47 = new google.maps.Marker({
+    position: point47,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker48 = new google.maps.Marker({
+    position: point48,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker49 = new google.maps.Marker({
+    position: point49,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker50 = new google.maps.Marker({
+    position: point50,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker51 = new google.maps.Marker({
+    position: point51,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker52 = new google.maps.Marker({
+    position: point52,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker43.setMap(map);
+  marker44.setMap(map);
+  marker45.setMap(map);
+  marker46.setMap(map);
+  marker47.setMap(map);
+  marker48.setMap(map);
+  marker49.setMap(map);
+  marker50.setMap(map);
+  marker51.setMap(map);
+  marker52.setMap(map);
+  }
+  
+  //PG
+  if(x == "Prince Georges County"){
+  var marker53 = new google.maps.Marker({
+    position: point53,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker54 = new google.maps.Marker({
+    position: point54,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker55 = new google.maps.Marker({
+    position: point55,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker56 = new google.maps.Marker({
+    position: point56,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker57 = new google.maps.Marker({
+    position: point57,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker58 = new google.maps.Marker({
+    position: point58,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker59 = new google.maps.Marker({
+    position: point59,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker60 = new google.maps.Marker({
+    position: point60,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker61 = new google.maps.Marker({
+    position: point61,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker53.setMap(map);
+  marker54.setMap(map);
+  marker55.setMap(map);
+  marker56.setMap(map);
+  marker57.setMap(map);
+  marker58.setMap(map);
+  marker59.setMap(map);
+  marker60.setMap(map);
+  marker61.setMap(map);
+  }
+  
+  //Queen Annes County-2
+  if(x == "Queen Annes County"){
+  var marker62 = new google.maps.Marker({
+    position: point62,
+    animation: google.maps.Animation.BOUNCE
+  });
+  var marker63 = new google.maps.Marker({
+    position: point63,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker62.setMap(map);
+  marker63.setMap(map);
+  }
+  
+  //Saint Marys County-1
+  if(x == "Saint Marys County"){
+  var marker64 = new google.maps.Marker({
+    position: point64,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker64.setMap(map);
+  }
+  //Somerset County-1
+  if(x == "Somerset County"){
+  var marker65 = new google.maps.Marker({
+    position: point65,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker65.setMap(map);
+  }
+  //Talbot County-1
+  if(x == "Talbot County"){
+  var marker66 = new google.maps.Marker({
+    position: point66,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker66.setMap(map);
+  }
+  //Washington County-1
+  if(x == "Washington County"){
+  var marker67 = new google.maps.Marker({
+    position: point67,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker67.setMap(map);
+  }
+  //Wicomico County-1
+  if(x == "Wicomico County"){
+  var marker68 = new google.maps.Marker({
+    position: point68,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker68.setMap(map);
+  }
+  //Worcester County-1
+  if(x == "Worcester County"){
+  var marker69 = new google.maps.Marker({
+    position: point69,
+    animation: google.maps.Animation.BOUNCE
+  });
+   marker69.setMap(map);
+  }
+  //marker1.setMap(map)
+  //marker2.setMap(map);
+}
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+	</body>
+	</html>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml">
+
+<!--Author: Anderson Chan -->
+
+<!-- composed of the information needed for an FAQ page for online voter registration
+FAQ page 
+Inputs: user selection from questions, option to ‘contact support/request help’(display a message box and contact info)
+Interactions: query DB & display requested information, or transfer user to support page, input data to DB & forward to support team, transfer user to confirmation page
+-->
+	
+<head>
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<script type="text/javascript" src="faqinfo.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+	<title> Voter Registration FAQ </title>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <ul class="w3-navbar w3-red w3-card-2 w3-large">
+    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+      <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction(navBarSmall)" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    </li>
+    <li><a href="Homepage.html" class="w3-padding-large w3-hover-white">Home</a></li>
+    <li class="w3-hide-small"><a href="user_profile.html" class="w3-padding-large w3-hover-white">Your profile</a></li>
+    <li class="w3-hide-small"><a href="mapdistsys2.html" class="w3-padding-large w3-hover-white">Find your polling location</a></li>
+    <li class="w3-hide-small"><a href="StateResidencePage.html" class="w3-padding-large w3-hover-white">Confirm state residency</a></li>
+    <li class="w3-hide-small"><a href="faqpage.html" class="w3-padding-large w3-hover-white">FAQ</a></li>
+  </ul>
+
+  <!-- Navbar on small screens -->
+  <div id="navBarSmall" class="w3-hide w3-hide-large w3-hide-medium">
+    <ul class="w3-navbar w3-left-align w3-large w3-black">
+      <li><a class="w3-padding-large" href="Homepage.html">Home</a></li>
+      <li><a class="w3-padding-large" href="user_profile.html">Your profile</a></li>
+      <li><a class="w3-padding-large" href="mapdistsys2.html">Find your polling location</a></li>
+      <li><a class="w3-padding-large" href="StateResidencePage.html">Confirm state residency</a></li>
+	  <li><a class="w3-padding-large" href="faqpage.html">FAQ</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center w3-padding-128">
+  <h1 class="w3-margin w3-jumbo">Welcome to the FAQ page!</h1>
+  <p class="w3-medium">Please select a topic below to find answers to common questions.</p>
+</header>
+
+
+	<!-- note: the FAQ questions and answers will require javascript and ajax,
+			user will click on below menu buttons and ajax will retrieve data from the database
+	-->
+<div class="w3-accordion">
+    <button onclick="myFunction('faq1');highlight('faq1')" class="w3-btn-block w3-aqua">Voter Registration Eligibility</button>
+	<div id="faq1" class="w3-accordion-content w3-center">
+		<div class="w3-accordion">
+		
+		<button onclick="myFunction('faq1_a');displayFAQ('faq1_a');" class="w3-btn-block w3-sand">Am I Eligible?</button>
+		<div id="faq1_a" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext"></span>
+		</div>
+		
+		<button onclick="myFunction('faq1_b');displayFAQ2('faq1_b');" class="w3-btn-block w3-sand">Military or Overseas?</button>
+		<div id="faq1_b" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext2"></span>
+		</div>
+		
+		<button onclick="myFunction('faq1_c');displayFAQ3('faq1_c');" class="w3-btn-block w3-sand">Criminal Record?</button>
+		<div id="faq1_c" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext3"></span>
+		</div>
+		</div>
+	</div>
+	
+	<button onclick="myFunction('faq2');highlight('faq2')" class="w3-btn-block w3-green">How It Works</button>
+	<div id="faq2" class="w3-accordion-content w3-center">
+		<div class="w3-accordion">
+		
+		<button onclick="myFunction('faq2_a');displayFAQ4('faq2_a');" class="w3-btn-block w3-sand">When Do I Register?</button>
+		<div id="faq2_a" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext4"></span>
+		</div>
+		
+		<button onclick="myFunction('faq2_b');displayFAQ5('faq2_b');" class="w3-btn-block w3-sand">Where Do I Register?</button>
+		<div id="faq2_b" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext5"></span>
+		</div>
+		
+		<button onclick="myFunction('faq2_c');displayFAQ6('faq2_c');" class="w3-btn-block w3-sand">How Can I Register?</button>
+		<div id="faq2_c" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext6"></span>
+		</div>
+		
+		<button onclick="myFunction('faq2_d');displayFAQ7('faq2_d');" class="w3-btn-block w3-sand">What Necessary Documents?</button>
+		<div id="faq2_d" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext7"></span>
+		</div>
+		</div>
+	</div>
+	
+	<button onclick="myFunction('faq3');highlight('faq3')" class="w3-btn-block w3-khaki">Registration Verification</button>
+	<div id="faq3" class="w3-accordion-content w3-center">
+		<div class="w3-accordion">
+		
+		<button onclick="myFunction('faq3_a');displayFAQ8('faq3_a');" class="w3-btn-block w3-sand">When Do I Know?</button>
+		<div id="faq3_a" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext8"></span>
+		</div>
+		
+		<button onclick="myFunction('faq3_b');displayFAQ9('faq3_b');" class="w3-btn-block w3-sand">Where Do I Check?</button>
+		<div id="faq3_b" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext9"></span>
+		</div>
+		
+		<button onclick="myFunction('faq3_c');displayFAQ10('faq3_c');" class="w3-btn-block w3-sand">Who Do I Contact?</button>
+		<div id="faq3_c" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext10"></span>
+		</div>
+		</div>
+	</div>
+		
+	<button onclick="myFunction('faq4');highlight('faq4')" class="w3-btn-block w3-deep-orange">Updating Registration</button>
+	<div id="faq4" class="w3-accordion-content w3-center">
+		<div class="w3-accordion">
+		
+		<button onclick="myFunction('faq4_a');displayFAQ11('faq4_a');" class="w3-btn-block w3-sand">How Do I Update My Informaton?</button>
+		<div id="faq4_a" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext11"></span>
+		</div>
+		
+		<button onclick="myFunction('faq4_b');displayFAQ12('faq4_b');" class="w3-btn-block w3-sand">When Do I Need To Update My Information?</button>
+		<div id="faq4_b" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext12"></span>
+		</div>
+		</div>
+	</div>	
+	
+	<button onclick="myFunction('faq5');highlight('faq5')" class="w3-btn-block w3-deep-purple">Political Affiliation</button>
+	<div id="faq5" class="w3-accordion-content w3-center">
+		<div class="w3-accordion">
+		
+		<button onclick="myFunction('faq5_a');displayFAQ13('faq5_a');" class="w3-btn-block w3-sand">Can I Change My Political Party?</button>
+		<div id="faq5_a" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext13"></span>
+		</div>
+		
+		<button onclick="myFunction('faq5_b');displayFAQ14('faq5_b');" class="w3-btn-block w3-sand">Where Can I Find More Info on Political Parties?</button>
+		<div id="faq5_b" class="w3-accordion-content w3-center">
+			<span class="w3-container" id="faqtext14"></span>
+		</div>
+		</div>
+	</div>		
+		
+</div>
+	
+<div class= "w3-container w3-red">
+	<p>Contact Support</p>
+	<form name="support" action="faqpage.php" method="POST" class="w3-container">
+	<p>
+		<label class="w3-label w3-validate w3-text-cyan"> 
+		Email address: <input type="text" name="useremail" id="emailbox" class="w3-input w3-border" size="50" maxlength="120" onmouseover="giveAdvice(1)" onmouseout="giveAdvice(2);checkFields()"/>
+		</label><br/>
+		<label class="w3-label w3-validate w3-text-cyan">
+		Description: <br/> <textarea name="comments" id="commentbox" class="w3-input w3-border" onmouseover="giveAdvice(0)" onmouseout="giveAdvice(2);checkFields()"> </textarea>
+		</label><br/>
+
+		<div class="w3-container" id="adviceBox">
+		
+		</div> <br/>
+		
+		<input class="w3-btn w3-blue" type="submit" value="Submit"	/>
+		<input class="w3-btn w3-blue" type="reset" value="Clear" />
+	</p>
+	</form>
+</div>
+
+
+</body>
+</html>

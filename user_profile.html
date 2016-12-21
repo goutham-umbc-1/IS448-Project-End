@@ -1,0 +1,95 @@
+<!-- Change User Profile Page 
+
+Written by: Alvin Blesson
+Date: 11-20-16
+
+Modified 12-20-16
+
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Change User Profile</title>
+	<link rel="stylesheet" type="text/css" href="app_format.css"/>
+  <script type = "text/javascript"  src = "profile.js" > </script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+  </head>
+
+  <!-- Start Page Content -->
+  <body>
+	<p class ="heading"> <span class = "large" > Change Voter Profile  </span>
+	<br />
+  <a href="Homepage.html"> Home </a> |
+	<a href="faqpage.html"> Need Help? </a>
+  </p>
+
+
+  <div class= "innerbox">
+    <form name="voter_form" action="user_profile.php" method="post" onsubmit="return Validate();">
+  
+    <!-- Text Box Fields -->
+    
+    <br/><br/>
+    <label>
+      First Name: <input type="text" name="fname" id ="fname" 
+      value = "" />  <br /><br /> 
+    </label>
+    <label>
+      Last Name: <input type="text" name="lname" id ="lname" /> <br /><br />
+    </label>
+    <label>
+      Date of Birth: <input type="text" name="birthday" id ="birthday"/> (use YYYY-MM-DD format) <br /><br />
+    </label>
+    <label>
+      Street Address: <input type="text" name="address" id ="address" /> <br /><br />
+    </label>
+    <label>
+      City: <input type="text" name="city" id ="city" /> <br /><br />
+    </label> 
+    <label>
+      State: <input type="text" name="state" id ="state" onblur="CheckState(this.value)"/> <span id = "msgbox"> </span><br /><br />
+    </label> 
+    <label>
+      Zip: <input type="text" name="zip" id ="zip" /> <br /><br />
+    </label>   
+    <label>
+      County: <input type="text" name="county" id ="county" /> <br /><br />
+    </label> 
+    <label>
+      Phone: <input type="text" name="phone" id ="phone" /> <br /><br />
+    </label>
+    <label>
+      Email: <input type="text" name="email" id ="email" /> <br /><br />
+    </label>
+
+    <label>
+    <!-- Set of radio buttons -->
+      Party Affliation: <br/>
+
+      <div class="indent">
+      <input type="radio" name="party" value="Republican" checked="checked"  /> <span id ="repub" onmouseover="ChangeRed('mouseover')" onmouseout="ChangeRed('out')"> Republican </span> <br/>
+
+      <input type="radio" name="party" value="Democrat" /> <span id ="dem" onmouseover="ChangeBlue('mouseover')" onmouseout="ChangeBlue('out')"> Democrat </span><br/>
+      <input type="radio" name="party" value="Green" /> Green <br/>
+      <input type="radio" name="party" value="Libertarian" /> Libertarian <br/>
+      <input type="radio" name="party" value="Independent" /> Independent <br/>
+      </div>
+    </label>
+
+  <br /><br />
+
+  <label>
+  <!-- Submit button -->
+  <input type="submit" name="submitButton" value="Update My Profile"/>
+  </label>
+  <br /><br />        
+  
+  </div>
+  </form>
+
+  <!-- End Page Content -->
+  </body>
+</html>
